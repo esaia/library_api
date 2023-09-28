@@ -6,18 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Book extends Model
+class Author extends Model
 {
 	use HasFactory;
 
-	protected $fillable = [
-		'name',
-		'year',
-		'status',
-	];
+	protected $fillable = ['name', 'birthday'];
 
-	public function authors(): BelongsToMany
+	public function books(): BelongsToMany
 	{
-		return $this->belongsToMany(Author::class, 'author_book');
+		return $this->belongsToMany(Book::class, 'author_book');
 	}
 }
